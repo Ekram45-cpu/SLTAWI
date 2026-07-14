@@ -1,0 +1,6 @@
+{
+  "name": "Siltawi Digital Marketing",
+  "description": "Premium full-stack website for Siltawi Digital Marketing Agency based in Addis Ababa, Ethiopia, featuring an advanced digital menu showcase system and administrative portal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
