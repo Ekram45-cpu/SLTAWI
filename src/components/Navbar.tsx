@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, ShieldAlert, Coffee } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
-  isAdminLoggedIn: boolean;
-  onLogout: () => void;
 }
 
-export default function Navbar({ activeTab, setActiveTab, isAdminLoggedIn, onLogout }: NavbarProps) {
+export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -55,11 +53,11 @@ export default function Navbar({ activeTab, setActiveTab, isAdminLoggedIn, onLog
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => handleNavClick('home')}>
             <img
               src="https://workshop.siltawi.com/siltawi_logo_normal_eng_v2.svg"
-              alt="Siltawi Digital Marketing Logo"
+              alt="Siltawi Digital Logo"
               className="h-10 w-auto"
               referrerPolicy="no-referrer"
             />
-            <span className="ml-2.5 font-sans font-bold tracking-tight text-lg text-slate-950 hidden sm:block">
+            <span className="ml-2.5 font-sans font-bold tracking-tight text-lg text-slate-950">
               Siltawi <span className="text-orange-500 font-medium">Digital</span>
             </span>
           </div>
@@ -80,60 +78,10 @@ export default function Navbar({ activeTab, setActiveTab, isAdminLoggedIn, onLog
                 {item.label}
               </button>
             ))}
-
-            <div className="h-6 w-px bg-slate-200 mx-2"></div>
-
-            {/* Showcase & Admin Tabs */}
-            <button
-              id="nav-link-menu"
-              onClick={() => handleNavClick('menu')}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold border transition-all ${
-                activeTab === 'menu'
-                  ? 'text-white bg-slate-900 border-slate-900'
-                  : 'text-slate-800 border-slate-200 hover:bg-slate-50'
-              }`}
-            >
-              <Coffee className="w-4 h-4 text-orange-500" />
-              Digital Menu
-            </button>
-
-            <button
-              id="nav-link-admin"
-              onClick={() => handleNavClick('admin')}
-              className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
-                activeTab === 'admin'
-                  ? 'bg-orange-500 text-white hover:bg-orange-600'
-                  : 'bg-slate-100 text-slate-800 hover:bg-slate-200'
-              }`}
-            >
-              <ShieldAlert className="w-4 h-4" />
-              {isAdminLoggedIn ? 'Admin Panel' : 'Admin Portal'}
-            </button>
-
-            {isAdminLoggedIn && (
-              <button
-                id="nav-logout-btn"
-                onClick={onLogout}
-                className="px-3.5 py-2 text-sm font-medium text-red-600 hover:bg-red-50 rounded-lg transition-all"
-              >
-                Logout
-              </button>
-            )}
           </div>
 
           {/* Mobile menu button */}
           <div className="flex lg:hidden items-center space-x-2">
-            <button
-              id="nav-link-menu-mobile"
-              onClick={() => handleNavClick('menu')}
-              className={`p-2 rounded-lg border flex items-center gap-1 ${
-                activeTab === 'menu' ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-800 border-slate-200'
-              }`}
-            >
-              <Coffee className="w-4 h-4 text-orange-500" />
-              <span className="text-xs font-semibold">Menu</span>
-            </button>
-
             <button
               id="nav-mobile-menu-toggle"
               onClick={() => setIsOpen(!isOpen)}
@@ -162,46 +110,6 @@ export default function Navbar({ activeTab, setActiveTab, isAdminLoggedIn, onLog
               {item.label}
             </button>
           ))}
-          <div className="border-t border-slate-100 my-2 pt-2 space-y-2">
-            <button
-              id="nav-link-mobile-menu"
-              onClick={() => handleNavClick('menu')}
-              className={`flex items-center gap-2 w-full px-4 py-2.5 rounded-lg text-base font-semibold border transition-all ${
-                activeTab === 'menu'
-                  ? 'text-white bg-slate-900 border-slate-900'
-                  : 'text-slate-800 border-slate-200 hover:bg-slate-50'
-              }`}
-            >
-              <Coffee className="w-5 h-5 text-orange-500" />
-              Digital Menu Showcase
-            </button>
-
-            <button
-              id="nav-link-mobile-admin"
-              onClick={() => handleNavClick('admin')}
-              className={`flex items-center gap-2 w-full px-4 py-2.5 rounded-lg text-base font-semibold transition-all ${
-                activeTab === 'admin'
-                  ? 'bg-orange-500 text-white'
-                  : 'bg-slate-100 text-slate-800'
-              }`}
-            >
-              <ShieldAlert className="w-5 h-5" />
-              {isAdminLoggedIn ? 'Admin Control Center' : 'Admin Portal'}
-            </button>
-
-            {isAdminLoggedIn && (
-              <button
-                id="nav-mobile-logout"
-                onClick={() => {
-                  onLogout();
-                  setIsOpen(false);
-                }}
-                className="block w-full text-left px-4 py-2.5 rounded-lg text-base font-semibold text-red-600 hover:bg-red-50"
-              >
-                Logout Account
-              </button>
-            )}
-          </div>
         </div>
       )}
     </nav>

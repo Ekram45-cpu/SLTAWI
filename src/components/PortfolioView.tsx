@@ -10,6 +10,12 @@ interface PortfolioViewProps {
 export default function PortfolioView({ setActiveTab }: PortfolioViewProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedProject, setSelectedProject] = useState<PortfolioProject | null>(null);
+  const [activeScreenshotIndex, setActiveScreenshotIndex] = useState<number>(0);
+
+  const handleProjectClick = (project: PortfolioProject) => {
+    setSelectedProject(project);
+    setActiveScreenshotIndex(0);
+  };
 
   const categories = ['All', 'Branding & Design', 'Website Development', 'Digital Marketing', 'SEO Services', 'Content Creation'];
 
@@ -62,7 +68,7 @@ export default function PortfolioView({ setActiveTab }: PortfolioViewProps) {
               <div
                 key={project.id}
                 id={`project-card-${project.id}`}
-                onClick={() => setSelectedProject(project)}
+                onClick={() => handleProjectClick(project)}
                 className="bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-lg transition-all group cursor-pointer flex flex-col justify-between"
               >
                 <div>
@@ -114,9 +120,9 @@ export default function PortfolioView({ setActiveTab }: PortfolioViewProps) {
             {/* Modal Image Header */}
             <div className="relative h-64 sm:h-80 w-full flex-shrink-0">
               <img
-                src={selectedProject.image}
+                src={selectedProject.screenshots?.[activeScreenshotIndex] ?? selectedProject.image}
                 alt={selectedProject.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-all duration-350"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6 text-white space-y-2">
@@ -158,6 +164,38 @@ export default function PortfolioView({ setActiveTab }: PortfolioViewProps) {
                   </div>
                 </div>
               </div>
+
+              {/* Interactive Mockups & Screenshots Gallery */}
+              {selectedProject.screenshots && selectedProject.screenshots.length > 0 && (
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-sans font-bold text-slate-950 text-sm uppercase tracking-wider flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-orange-500" /> Interactive Mockups & Screenshots
+                    </h4>
+                    <span className="text-xs text-slate-500 font-medium">Click to preview above</span>
+                  </div>
+                  <div className="grid grid-cols-3 gap-3">
+                    {selectedProject.screenshots.map((shot, idx) => (
+                      <div
+                        key={idx}
+                        id={`screenshot-thumbnail-${idx}`}
+                        onClick={() => setActiveScreenshotIndex(idx)}
+                        className={`aspect-video rounded-xl overflow-hidden border-2 cursor-pointer transition-all duration-200 hover:scale-102 ${
+                          activeScreenshotIndex === idx
+                            ? 'border-orange-500 ring-4 ring-orange-500/15 shadow-md'
+                            : 'border-slate-200 hover:border-slate-300 opacity-85 hover:opacity-100'
+                        }`}
+                      >
+                        <img
+                          src={shot}
+                          alt={`${selectedProject.title} screenshot ${idx + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Challenge / Solution / Impact Sections */}
               <div className="space-y-6">

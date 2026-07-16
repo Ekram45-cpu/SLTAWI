@@ -21,10 +21,10 @@ export default function HomeView({ setActiveTab, setSelectedService }: HomeViewP
     const timer = setInterval(() => {
       currentStep++;
       setStats({
-        projects: Math.min(Math.floor((120 / steps) * currentStep), 120),
-        growth: Math.min(Math.floor((350 / steps) * currentStep), 350),
-        experience: Math.min(Math.floor((5 / steps) * currentStep), 5),
-        experts: Math.min(Math.floor((15 / steps) * currentStep), 15),
+        projects: Math.min(Math.floor((18 / steps) * currentStep), 18),
+        growth: Math.min(Math.floor((45 / steps) * currentStep), 45),
+        experience: Math.min(Math.floor((3 / steps) * currentStep), 3),
+        experts: Math.min(Math.floor((5 / steps) * currentStep), 5),
       });
 
       if (currentStep >= steps) {
@@ -119,8 +119,8 @@ export default function HomeView({ setActiveTab, setSelectedService }: HomeViewP
                     <TrendingUp className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="text-xl font-extrabold text-slate-950">+350%</div>
-                    <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Average CTR Uplift</div>
+                    <div className="text-xl font-extrabold text-slate-950">+45%</div>
+                    <div className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Direct Bookings Growth</div>
                   </div>
                 </div>
 
@@ -129,8 +129,8 @@ export default function HomeView({ setActiveTab, setSelectedService }: HomeViewP
                     <Flame className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="text-lg font-bold">120+ Brands</div>
-                    <div className="text-xs text-slate-400">Empowered across Africa</div>
+                    <div className="text-lg font-bold">18+ Relaunches</div>
+                    <div className="text-xs text-slate-400">Bespoke case projects</div>
                   </div>
                 </div>
               </div>

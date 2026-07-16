@@ -49,6 +49,7 @@ export interface PortfolioProject {
   challenge: string;
   solution: string;
   impact: string;
+  screenshots?: string[];
 }
 
 export interface TeamMember {

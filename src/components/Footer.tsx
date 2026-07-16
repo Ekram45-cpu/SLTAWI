@@ -18,10 +18,10 @@ export default function Footer({ setActiveTab }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Brief */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2 cursor-pointer" onClick={() => handleLinkClick('home')}>
+            <div className="flex items-center space-x-2.5 cursor-pointer" onClick={() => handleLinkClick('home')}>
               <img
                 src="https://workshop.siltawi.com/siltawi_logo_normal_eng_v2.svg"
-                alt="Siltawi Digital Marketing"
+                alt="Siltawi Digital"
                 className="h-10 w-auto brightness-200"
                 referrerPolicy="no-referrer"
               />
@@ -72,11 +72,6 @@ export default function Footer({ setActiveTab }: FooterProps) {
                   <ArrowRight className="w-3.5 h-3.5 text-orange-500" /> Expert Team
                 </button>
               </li>
-              <li>
-                <button onClick={() => handleLinkClick('menu')} className="hover:text-orange-500 transition-colors flex items-center gap-1.5 text-orange-400 font-medium">
-                  <ArrowRight className="w-3.5 h-3.5 text-orange-500" /> Digital Menu Demo
-                </button>
-              </li>
             </ul>
           </div>
 
@@ -94,7 +89,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-orange-500 flex-shrink-0" />
-                <span>info@siltawi.com / business@siltawi.com</span>
+                <span>info@siyandigital.com / business@siyandigital.com</span>
               </li>
             </ul>
           </div>
@@ -124,7 +119,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
 
         {/* Divider */}
         <div className="border-t border-slate-900 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <p>© {currentYear} Siltawi Digital Marketing. All rights reserved.</p>
+          <p>© {currentYear} Siyan Digital Marketing. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
